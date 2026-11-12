@@ -1,0 +1,331 @@
+/* Motion polish, without changing the original layout or palette. */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Set before the first paint, not when a visible element enters the viewport. */
+html.motion-boot :is(.h1, .right_1, .text_title_1, .icon_benefit_1, .btn_1,
+  [class^="card_2_wrapped"], .cards_4_wrapped, .white_bg_up_5,
+  .white_bg_bottom_5, .title-btn_3, .title-btn_4, .title_4_rameni,
+  .title-btn_7, .lightbox_3) {
+  opacity: 0 !important;
+}
+
+html.motion-boot .btn_1 {
+  display: flex !important;
+}
+
+.reveal-pending {
+  opacity: 0;
+}
+
+.h1 {
+  visibility: visible !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+:where(a, button, input, [tabindex]):focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 5px;
+}
+
+.form_pop_up .text-field:is(:focus, :focus-visible) {
+  outline: none;
+  border-color: transparent;
+  box-shadow: inset 0 -2px 0 0 var(--light_red);
+}
+
+.form_pop_up .text-field,
+.form_pop_up .text-field:hover {
+  padding-left: 32px;
+}
+
+.politics_footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+}
+
+.politics_footer > .data_footer {
+  justify-self: start;
+}
+
+.politics_footer > .link-block {
+  justify-self: center;
+}
+
+.politics_footer > .creator-link {
+  justify-self: end;
+  text-align: right;
+}
+
+@media (max-width: 767px) {
+  .politics_footer {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .politics_footer > :is(.data_footer, .link-block, .creator-link) {
+    justify-self: center;
+    text-align: center;
+  }
+}
+
+.menu_burger {
+  border: 0;
+  padding: 0;
+  appearance: none;
+}
+
+@media (max-width: 1139px) {
+  .left_1 {
+    max-width: 100%;
+  }
+}
+
+/* Preserve the desktop layout at its lower edge without clipping fixed widths. */
+@media (min-width: 1140px) and (max-width: 1203px) {
+  .container {
+    width: calc(100% - 64px);
+  }
+
+  .white_bg_3 {
+    width: calc(100% + 64px);
+  }
+
+  .cards_4_wrapped {
+    width: auto;
+    min-width: 0;
+  }
+
+  .left_1, .right_1, .left_5, .right_5, .left_7, .right_7 {
+    min-width: 0;
+  }
+}
+
+.line_burger {
+  transition: transform 240ms ease, opacity 180ms ease;
+}
+
+.menu_burger[aria-expanded="true"] .line_burger:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu_burger[aria-expanded="true"] .line_burger:nth-child(2) {
+  opacity: 0;
+}
+
+.menu_burger[aria-expanded="true"] .line_burger:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav_menu_mobile .container.flex_nav {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.nav_menu_item-line .line_menu {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 240ms ease;
+}
+
+.nav_menu_item-line:is(:hover, :focus-visible, .w--current) .line_menu {
+  transform: scaleX(1);
+}
+
+:is(.btn_1, .btn_3, .btn_3_1, .btn_3_mobile, .btn_5, .btn_order, .btn_footer, .btn_form) {
+  transition: background-color 200ms ease, color 200ms ease,
+    box-shadow 240ms ease, transform 240ms cubic-bezier(.2, .65, .3, 1);
+}
+
+.cards_4_wrapped,
+[class^="card_2_wrapped"] {
+  transition: transform 300ms cubic-bezier(.2, .65, .3, 1), box-shadow 300ms ease;
+}
+
+.image_4_wrapped img,
+.lightbox_3 img {
+  transition: scale 550ms cubic-bezier(.2, .65, .3, 1);
+}
+
+.lightbox_3 .text_-_3 {
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  translate: 0 10px;
+  transition: opacity 220ms ease, translate 300ms ease;
+}
+
+.lightbox_3:is(:hover, :focus-visible) .text_-_3 {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cards_4_wrapped:hover,
+  [class^="card_2_wrapped"]:hover {
+    transform: translateY(-5px);
+    box-shadow: inset 0 0 0 1px var(--orange), 0 12px 26px #2020200d;
+  }
+
+  .cards_4_wrapped:hover .image_4_wrapped img,
+  .lightbox_3:hover img {
+    scale: 1.035;
+  }
+}
+
+/* FAQ height is animated in JS; keep the answer in normal document flow. */
+.motion-ready .open-drop {
+  display: block;
+  height: 0;
+  margin-top: 0;
+  padding: 0 32px;
+  overflow: hidden;
+  visibility: hidden;
+  background-color: #f5f5f4;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.motion-ready .open-drop.w--open {
+  padding: 0 32px;
+  visibility: visible;
+}
+
+.motion-ready .open-drop > .paragraph {
+  padding-block: 20px;
+}
+
+.motion-ready .x-folder3 {
+  transition: transform 280ms ease;
+}
+
+.motion-ready .drop-1[aria-expanded="true"] .x-folder3 {
+  transform: rotate(180deg);
+}
+
+.drop-down,
+.drop-down:hover {
+  transition: box-shadow 220ms ease;
+}
+
+.drop-down:hover {
+  padding-left: 20px;
+}
+
+@media (max-width: 479px) {
+  :is(.btn_1, .btn_3, .btn_3_1, .btn_3_mobile:not(.review), .btn_5,
+    .btn_footer, .btn_form) {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+  }
+
+  .btn_header {
+    width: fit-content;
+    padding-inline: 0;
+    align-self: center;
+    text-align: center;
+  }
+
+  .phone-btn_header,
+  .phone-btn_footer {
+    width: 100%;
+  }
+
+  .text_about_footer {
+    align-items: center;
+    text-align: center;
+  }
+
+  .subtitle_1_footer {
+    width: 100%;
+    text-align: center;
+  }
+
+  .cards_4_all {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cards_4_all > :is(.cards_4_wrapped, .btn_3_mobile) {
+    width: 300px;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .drop-down:hover {
+    padding-left: 10px;
+  }
+}
+
+.motion-ready .form_pop_up {
+  max-width: calc(100vw - 32px);
+  max-height: calc(86dvh - 100px);
+  overflow: visible;
+}
+
+/* Scroll the form, not the dialog: the original close button sits outside it. */
+.motion-ready .form_pop_up > .w-form {
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.pagination .number[aria-current="page"] {
+  color: var(--light_red);
+  cursor: default;
+}
+
+@media (min-width: 768px) and (max-width: 1139px) {
+  .right_1 {
+    max-width: 100%;
+  }
+
+  .right_1 .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 70%;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .cards_4_wrapped:hover,
+  [class^="card_2_wrapped"]:hover {
+    transform: none;
+  }
+
+  .image_4_wrapped img,
+  .lightbox_3 img {
+    scale: 1 !important;
+  }
+
+  .h1, .h1 * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+  }
+}
